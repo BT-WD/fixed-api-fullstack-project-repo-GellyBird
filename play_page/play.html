@@ -28,5 +28,35 @@
         </div>
       </header>
     </div>
+    <div id="gameBody">
+      <select id="museumSelect">
+        <button><selectedcontent></selectedcontent></button>
+        <option value="">Select a museum</option>
+        <option value="met">
+          <span class="icon" aria-hidden="true">🖼️</span>
+          <span class="option-label">The Metropolitan Museum of Art</span>
+        </option>
+        <option value="vna">
+          <span class="icon" aria-hidden="true">👑</span>
+          <span class="option-label">The Victoria and Albert Museum</span>
+        </option>
+        <option value="nan">
+          <span class="icon" aria-hidden="true">❓</span>
+          <span class="option-label">Random</span>
+        </option>
+      </select>
+      <br><br>
+      <img id="artImage" src="" alt="No Piece Selected" />
+      <br/><br/>
+      <button id="selectPieceButton">Pick museum piece</button>
+      <br>
+      <label for="attribution">Enter attribution:</label>
+      <input type="text" id="attribution" />
+      <button id="submitButton">Submit Answer</button>
+      <br/><br/>
+      <p id="score">Score: 0/10 correct</p>
+      <p id="remainingPieces">Pieces Left: 10/10</p>
+    </div>
+    <script src="play.js" type="module"></script>
   </body>
 </html>

@@ -71,3 +71,38 @@ a {
   font-family: "IM Fell DW Pica SC", serif;
   font-size: 35px;
 }
+
+#gameBody {
+  background-color: antiquewhite;
+  width: 100%;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+#artImage {
+  width: 10vw;
+  height: auto;
+}
+
+#museumSelect {
+  position:relative;
+  appearance: none;
+  margin: 50px;
+  padding: 5px 35px 5px 5px;
+  font-size: 16px;
+  border: 1px solid #CCC;
+  height: 34px;
+  background: url(../global_assets/YoungLadiesofTheVillage.jpg);
+  background-position: bottom;
+  color:white;
+  font-family: "IM Fell DW Pica SC", serif;
+  text-align: center;
+}
+
+option {
+    background: url(../global_assets/YoungLadiesofTheVillage.jpg);
+  background-position: bottom;
+}
