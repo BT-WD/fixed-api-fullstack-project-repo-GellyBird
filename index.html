@@ -3,9 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>API Full Stack Project</title>
+    <title>Museum Guesser</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Concert+One&family=Dekko&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=IM+Fell+DW+Pica+SC&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!-- You code goes here-->
+    <div id="headerExtender">
+      <header id="mainHeader">
+        <div class="headerItem" id="navButtons">
+          <a class="navButton" id="homeButton" href="index.html">HOME</a>
+          <a class="navButton" id="guideButton">GUIDE</a>
+          <!-- NO LINK YET -->
+          <a class="navButton" id="resorButton">RESOURCES</a>
+          <!-- NO LINK YET -->
+        </div>
+        <div class="headerItem" id="userImg">
+          <img id="pfp" src="global_assets/Default_pfp.svg" />
+        </div>
+      </header>
+      <p id="titleText">MUSEUM GUESSER</p>
+      <a id="playButton" href="play_page/play.html">PLAY</a>
+    </div>
+
+    <div class="bodyInfo" id="homeStats">
+      <div class="bodyItem" id="bestStats">
+        <div class="statBox" id="favMuseumBox">
+          <img class="statBox" id="favMuseum" src="global_assets/Group 6.svg" />
+          <p class="statText" id="favMuseumText">No Museum</p>
+        </div>
+        <div class="statBox" id="bestCategoryBox">
+          <img
+            class="statBox"
+            id="bestCategory"
+            src="global_assets/Group 5.svg"
+          />
+          <p class="statText" id="bestCategoryText">No Category</p>
+        </div>
+        <div class="statBox" id="bestStreakBox">
+          <img
+            class="statBox"
+            id="bestStreak"
+            src="global_assets/Group 4.svg"
+          />
+          <p class="statText" id="bestStreakText">No Streak</p>
+        </div>
+      </div>
+      <div class="bodyItem" id="topScores">
+        <img class="statBox" src="global_assets/Group 3.svg" />
+        <div class="statText" id="topScoresBox">
+          <p>1 - NO SCORE</p>
+          <p>2 - NO SCORE</p>
+          <p>3 - NO SCORE</p>
+          <p>4 - NO SCORE</p>
+          <p>5 - NO SCORE</p>
+        </div>
+      </div>
+      <div class="bodyItem" id="about">
+        <img class="statBox" src="global_assets/Group 7.svg" />
+      </div>
+    </div>
+    <script src="index.js" type="module"></script>
   </body>
 </html>
