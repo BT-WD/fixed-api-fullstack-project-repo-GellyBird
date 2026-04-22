@@ -15,8 +15,7 @@ a {
 }
 
 body {
-  background-image: linear-gradient(rgb(253, 224, 191),transparent);
-  background-color: rgb(252, 245, 236);
+  background-color: antiquewhite;
 }
 
 #headerExtender {
@@ -81,83 +80,16 @@ body {
   font-size: 35px;
 }
 
-#gameBody {
-  width: 100%;
-  height: calc(100vh - 60px);
+#guideBox {
+  padding-top: 4vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   text-align: center;
-  align-items: center;
-}
-
-#artImage {
-  width: auto;
-  height: 20vh;
-}
-
-#museumSelect {
-  position:relative;
-  appearance: none;
-  margin: 50px auto;
-  padding: 5px 35px 5px 5px;
-  font-size: 16px;
-  border: 1px solid #CCC;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  height: 5vh;
-  width: 20vw;
-  background: url(../global_assets/YoungLadiesofTheVillage.jpg);
-  background-position: bottom;
-  color:white;
   font-family: "IM Fell DW Pica SC", serif;
-  text-align: center;
-  text-align-last: center;
+  row-gap: 10px;
 }
 
-#museumSelect:hover {
-  color: yellow;
-}
-
-option {
-  background-color: black;
-  background-position: bottom;
-  text-align: center;
-}
-
-#selectPieceButton {
-  background-image: url(../global_assets/YoungLadiesofTheVillage.jpg);
-  background-position: bottom;
-  color: white;
-  font-family: "IM Fell DW Pica SC", serif;
-  height: 5vh;
-  width: 20vw;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  font-size: 15px;
-}
-
-#selectPieceButton:hover {
-  color: yellow;
-}
-
-label {
-    font-family: "IM Fell DW Pica SC", serif;
-    font-size: 18px;
-}
-
-#attribution {
-  width: 20vw;
-  height: 5vh;
-}
-
-#score {
-  font-size: 18px;
-}
-
-#piecesLeft {
-  font-size: 18px;
-}
-
-#currentStreak {
-  font-size: 18px;
+.resourceLink {
+  color: black;
 }
