@@ -18,20 +18,24 @@
       <header id="mainHeader">
         <div class="headerItem" id="navButtons">
           <a class="navButton" id="homeButton" href="../index.html">HOME</a>
-          <a class="navButton" id="guideButton">GUIDE</a>
-          <!-- NO LINK YET -->
-          <a class="navButton" id="resorButton">RESOURCES</a>
-          <!-- NO LINK YET -->
+          <a class="navButton" id="guideButton" href="../guide_page/guide.html">GUIDE & RESOURCES</a>
         </div>
         <div class="headerItem" id="userImg">
           <img id="pfp" src="../global_assets/Default_pfp.svg" />
         </div>
       </header>
     </div>
+    <p id="titleText">MUSEUM GUESSER</p>
     <div id="gameBody">
+      <br><br><br>
+      <p id="score">Score: 0/10 correct</p>
+      <p id="remainingPieces">Pieces Left: 10/10</p>
       <select id="museumSelect">
         <button><selectedcontent></selectedcontent></button>
-        <option value="">Select a museum</option>
+        <option value="selectMuseum">
+          <span class="icon" aria-hidden="true">🏛️</span>
+          <span class="option-label">Select a Museum</span>
+        </option>
         <option value="met">
           <span class="icon" aria-hidden="true">🖼️</span>
           <span class="option-label">The Metropolitan Museum of Art</span>
@@ -45,17 +49,14 @@
           <span class="option-label">Random</span>
         </option>
       </select>
+      <img id="artImage" src="../global_assets/Empty-frame.png" alt="No Piece Selected" />
       <br><br>
-      <img id="artImage" src="" alt="No Piece Selected" />
-      <br/><br/>
       <button id="selectPieceButton">Pick museum piece</button>
       <br>
       <label for="attribution">Enter attribution:</label>
       <input type="text" id="attribution" />
-      <button id="submitButton">Submit Answer</button>
-      <br/><br/>
-      <p id="score">Score: 0/10 correct</p>
-      <p id="remainingPieces">Pieces Left: 10/10</p>
+      <br>
+      <p id="currentStreak">Current Streak: 0</p>
     </div>
     <script src="play.js" type="module"></script>
   </body>

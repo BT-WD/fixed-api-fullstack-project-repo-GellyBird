@@ -45,6 +45,11 @@ a {
   margin: auto;
   color: white;
   filter: drop-shadow(1px 2px 5px black);
+  left: 50px;
+}
+
+.navButton:hover {
+  color: yellow;
 }
 
 #userImg {
@@ -159,4 +164,63 @@ a {
   width: auto;
   height: 26vw;
   font-size: 1.57vw;
+}
+#blurForLogin {
+  height: 100%;
+  width: 100%;
+  position:absolute;
+  backdrop-filter: blur(1px);
+  display: none; /* Will set this to inline when making it visible */
+}
+
+#userLogin {
+  display: none; /* Will set this to flex when making it visible */
+  flex-direction: column;
+  position: absolute;
+  justify-content: center;
+  text-align: center;
+  width: 50%;
+  height: calc(50% - 300px);
+  flex-direction: column;
+}
+
+/* Borrowed from firebase lab with some changes made */
+
+:root {
+    --border-width: 3px;
+    --element-border-radius: 5px;
+    
+    --button-height: 5px;
+    
+    --small-button-height: 2px;
+    
+    --element-padding: 0.8em;
+    
+    --maximum-width: 320px;
+}
+
+input, button, textarea {
+   font-family: inherit;
+   padding: var(--element-padding);
+   border-radius: var(--element-border-radius);
+   width: 100%;
+   box-sizing: border-box;
+}
+
+input, button {
+   font-size: 1.1em;
+   text-align: center;
+   font-family: "IM Fell DW Pica SC", serif;
+}
+
+input:focus, button:focus, textarea:focus {
+   outline: none;
+}
+
+input {
+    font-weight: 300;
+}
+
+button {
+  background-color: antiquewhite;
 }
