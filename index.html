@@ -1,9 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Museum Guesser</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Museum Guesser</title>
     <link rel="stylesheet" href="index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,15 +51,15 @@
           />
           <p class="statText" id="bestStreakText">No Streak</p>
         </div>
-      </div>
+    </div>
       <div class="bodyItem" id="topScores">
         <img class="statBox" src="global_assets/Group 3.svg" />
         <div class="statText" id="topScoresBox">
-          <p>1 - NO SCORE</p>
-          <p>2 - NO SCORE</p>
-          <p>3 - NO SCORE</p>
-          <p>4 - NO SCORE</p>
-          <p>5 - NO SCORE</p>
+          <p id="score1">1 - NO SCORE</p>
+          <p id="score2">2 - NO SCORE</p>
+          <p id="score3">3 - NO SCORE</p>
+          <p id="score4">4 - NO SCORE</p>
+          <p id="score5">5 - NO SCORE</p>
         </div>
       </div>
       <div class="bodyItem" id="about">
@@ -75,6 +75,6 @@
             <button id="create-account-btn" class="secondary-btn">Create Account</button>
         </div>
       </div>
-    <script src="index.js" type="module"></script>
+    <script type="module" src="index.js"></script>
   </body>
 </html>

@@ -48,26 +48,10 @@ body {
   margin: auto;
   color: white;
   filter: drop-shadow(1px 2px 5px black);
-  left: 50px;
 }
 
 .navButton:hover {
   color: yellow;
-}
-
-#userImg {
-  display: block;
-  width: 50px;
-  height: 50px;
-  padding-right: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-#pfp {
-  position: relative;
-  height: 100%;
-  width: 100%;
 }
 
 #titleText {

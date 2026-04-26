@@ -91,6 +91,10 @@ a {
   text-decoration-thickness: 2px;
 }
 
+#playButton:hover{
+  color: yellow;
+}
+
 #homeStats {
   position: fixed;
   width: 100vw;
@@ -169,7 +173,7 @@ a {
   height: 100%;
   width: 100%;
   position:absolute;
-  backdrop-filter: blur(1px);
+  backdrop-filter: blur(1.5px);
   display: none; /* Will set this to inline when making it visible */
 }
 
