@@ -105,7 +105,7 @@ function loginManager() {
 }
 
 // ------------------------- Add Stats -------------------------
-async function addStatToDb(statName, stat, user) {
+export async function addStatToDb(statName, stat, user) {
    try {
        const docRef = await addDoc(collection(db, statName), {
            statVal: stat,
@@ -129,7 +129,7 @@ async function getTopStatsFromDb(statName, user) {
 }
 
 // get stat values
-export async function getIndvStatVal(statName, user) {
+async function getIndvStatVal(statName, user) {
     const snapshot = await getIndvStatFromDb(statName,user);
     const vals = [];
         snapshot.forEach(async (doc) => {
@@ -149,7 +149,7 @@ async function getTopStatvals(statName, user) {
 
 // ------------------------- Update Stats -------------------------
 // when increasing values by 1, just say "inc1" as the newval
-async function updateStatFromDb(statName,newVal,user) {
+export async function updateStatFromDb(statName,newVal,user) {
     const snapshot = await getIndvStatFromDb(statName,user);
    try {
         snapshot.forEach(async (doc) => {
