@@ -145,3 +145,11 @@ label {
 #currentStreak {
   font-size: 18px;
 }
+
+#userLogin {
+  display: none; 
+}
+
+#headerImage {
+  display: none;
+}

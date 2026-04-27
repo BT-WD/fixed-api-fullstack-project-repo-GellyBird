@@ -129,7 +129,7 @@ async function getTopStatsFromDb(statName, user) {
 }
 
 // get stat values
-async function getIndvStatVal(statName, user) {
+export async function getIndvStatVal(statName, user) {
     const snapshot = await getIndvStatFromDb(statName,user);
     const vals = [];
         snapshot.forEach(async (doc) => {
