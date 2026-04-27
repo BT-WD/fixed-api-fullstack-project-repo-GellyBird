@@ -1,4 +1,4 @@
-import { addStatToDb as addStatToDb, updateStatFromDb as updateStatFromDb } from "../index.js"
+import { addStatToDb as addStatToDb, updateStatFromDb as updateStatFromDb, getIndvStatVal as getIndvStatVal } from "../index.js"
 
 // ------------------------- Variables -------------------------
 const metBaseUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects"
@@ -16,9 +16,12 @@ let title = ""
 let date = ""
 let artist = ""
 let category = ""
+let museum = ""
 
 let score = 0
 let piecesLeft = 10
+let currentStreakVal = 0
+let bestStreakVal = 0
 
 const vnaSearchOptions = ["sculpture","painting","other"]
 
@@ -131,12 +134,20 @@ const handleVNASelection = async () => {
 }
 
 // ------------------------- Game -------------------------
-const reset = () => {
+const reset = async () => {
+    if (sessionStorage.getItem("loggedIn") == "True") {
+        await addStatToDb("userScore",score,JSON.parse(sessionStorage.getItem("user")))
+        if (await getIndvStatVal("bestStreak"),JSON.parse(sessionStorage.getItem("user")) < bestStreakVal) {
+            await updateStatFromDb("bestStreak",bestStreakVal,JSON.parse(sessionStorage.getItem("user")))
+        }
+    }
     artImg.src = "../global_assets/Empty-frame.png"
     scoreEl.innerHTML = "Score: 0/10 correct"
     piecesLeftEl.innerHTML = "Pieces Left: 10/10"
+    streakEl.innerHTML = "Current Streak: "+currentStreakVal
     piecesLeft = 10
     score = 0
+    bestStreakVal = 0
     title = ""
     date = ""
     artist = ""
@@ -148,7 +159,7 @@ const roundHandler = async () => {
         reset()
     } else {
         pickPieceButton.removeEventListener("click",roundHandler)
-        let museum = museumSelectionEl.value //met,nan,vna
+        museum = museumSelectionEl.value //met,nan,vna
         if (museum == "met") {
             await handleMetSelection()
         } else if (museum == "vna") {
@@ -169,10 +180,51 @@ const roundHandler = async () => {
     }
 }
 
-const checkPoints = async () => {
+const checkPoints = () => {
     let points = 0
-    if (attributionBox.innerHTML.toLowerCase().contains(title.toLowerCase()))
+    if (title != undefined && attributionBox.value.toLowerCase().includes(title.toLowerCase())) {
+        points++;
+    } else if (title == undefined && attributionBox.value.toLowerCase() == "unknown") {
+        points ++;
+    }
+    if (date != undefined && attributionBox.value.toLowerCase().includes(date.toLowerCase())) {
+        points++;
+        if (points >= 2) {
+            score ++;
+            scoreEl.innerHTML = "Score: "+score+"/10 correct"
+            currentStreakVal ++;
+            streakEl.innerHTML = "Current Streak: "+currentStreakVal
+            return points;
+        } 
+    } else if (date == undefined && attributionBox.value.toLowerCase() == "unknown") {
+        if (points >= 2) {
+            score ++;
+            scoreEl.innerHTML = "Score: "+score+"/10 correct"
+            currentStreakVal ++;
+            streakEl.innerHTML = "Current Streak: "+currentStreakVal
+            return points;
+        } 
+    }
+    if (artist != undefined && attributionBox.value.toLowerCase().includes(artist.toLowerCase())) {
+        points++;
+        if (points >= 2) {
+            score ++;
+            scoreEl.innerHTML = "Score: "+score+"/10 correct"
+            currentStreakVal ++;
+            streakEl.innerHTML = "Current Streak: "+currentStreakVal
+            return points;
+        }
+    } else if (artist == undefined && attributionBox.value.toLowerCase() == "unknown") {
+        if (points >= 2) {
+            score ++;
+            scoreEl.innerHTML = "Score: "+score+"/10 correct"
+            currentStreakVal ++;
+            streakEl.innerHTML = "Current Streak: "+currentStreakVal
+            return points;
+        } 
+    }
     pickPieceButton.addEventListener("click",roundHandler) 
+    return points;
 }
 
 // this is a test, follow this format for dealing with the database (json parse and async required)
@@ -185,8 +237,33 @@ const checkPoints = async () => {
 //userImageEl.addEventListener("click",loginManager);
 // ------------------------- Main Logic -------------------------
 pickPieceButton.addEventListener("click",roundHandler)
-attributionBox.addEventListener("keypress",function(e) {
+attributionBox.addEventListener("keypress",async function(e) {
     if (e.key == "Enter") {
-        checkPoints()
+        let pointsGained = await checkPoints()
+        if (pointsGained >= 2) {
+            if (sessionStorage.getItem("loggedIn") == "True") {
+                if (category == "other") {
+                    await updateStatFromDb("bestCatOther","inc1",JSON.parse(sessionStorage.getItem("user")))
+                } else if (category == "sculpture") {
+                    await updateStatFromDb("bestCatSculpture","inc1",JSON.parse(sessionStorage.getItem("user")))
+                } else {
+                    await updateStatFromDb("bestCatPainting","inc1",JSON.parse(sessionStorage.getItem("user"))) 
+                }
+                if (museum == "met") {
+                    await updateStatFromDb("favMuseumMet","inc1",JSON.parse(sessionStorage.getItem("user")))
+                } else {
+                    await updateStatFromDb("favMuseumVNA","inc1",JSON.parse(sessionStorage.getItem("user")))
+                }
+            } 
+            console.log("pass")
+        } else {
+            if (currentStreakVal > bestStreakVal) {
+                bestStreakVal = currentStreakVal;
+            } else {
+                currentStreakVal = 0;
+                streakEl.innerHTML = "Current Streak: 0"
+            }
+            console.log("fail")
+        }
     }
 })
